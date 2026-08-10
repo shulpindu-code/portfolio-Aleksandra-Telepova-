@@ -162,36 +162,43 @@
             color: #b8a99a;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO (обновлённая с фото) ===== */
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
             padding: 40px 0 36px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.06);
         }
 
-        .hero h1 {
-            max-width: 800px;
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
         }
-        .hero h1 .accent {
+
+        .hero-content h1 {
+            max-width: 600px;
+        }
+        .hero-content h1 .accent {
             color: #b8a99a;
             font-style: italic;
         }
 
-        .hero .tagline {
+        .hero-content .tagline {
             font-size: clamp(0.95rem, 2vw, 1.2rem);
             font-weight: 300;
             color: #7a6e62;
             margin: 0.8rem 0 1.6rem;
-            max-width: 500px;
+            max-width: 480px;
         }
 
         .hero-badges {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            justify-content: center;
             margin-top: 6px;
         }
         .hero-badges span {
@@ -207,7 +214,22 @@
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+        }
+
+        .hero-image {
+            display: flex;
             justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            aspect-ratio: 3 / 4;
         }
 
         /* ===== ABOUT ===== */
@@ -442,7 +464,7 @@
             border-radius: 12px;
         }
 
-        /* ===== CONTACTS (НОВЫЙ БЛОК ПО ВАШЕМУ PDF) ===== */
+        /* ===== CONTACTS ===== */
         .contacts {
             padding: 50px 0 40px;
             border-top: 1px solid rgba(44, 44, 44, 0.06);
@@ -528,6 +550,20 @@
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+            .hero-content {
+                text-align: left;
+            }
+            .hero-badges {
+                justify-content: flex-start;
+            }
+            .hero-actions {
+                justify-content: flex-start;
+            }
         }
 
         @media (max-width: 768px) {
@@ -567,8 +603,31 @@
             }
 
             .hero {
+                grid-template-columns: 1fr;
+                gap: 24px;
                 padding: 28px 0 24px;
+                text-align: center;
             }
+            .hero-content {
+                align-items: center;
+                text-align: center;
+            }
+            .hero-content h1 {
+                max-width: 100%;
+            }
+            .hero-content .tagline {
+                max-width: 100%;
+            }
+            .hero-badges {
+                justify-content: center;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .hero-image img {
+                max-width: 280px;
+            }
+
             .hero-actions {
                 flex-direction: column;
                 align-items: center;
@@ -638,6 +697,9 @@
             .hero h1 {
                 font-size: clamp(1.8rem, 12vw, 2.2rem);
             }
+            .hero-image img {
+                max-width: 200px;
+            }
 
             .package-card {
                 padding: 18px 14px;
@@ -688,25 +750,30 @@
             </nav>
         </header>
 
-        <!-- ===== HERO ===== -->
+        <!-- ===== HERO (обновлённая с фото) ===== -->
         <section class="hero">
-            <h1>
-                Пространства, <br>
-                в которых <span class="accent">хочется жить</span>
-            </h1>
-            <p class="tagline">
-                Дизайн интерьеров для жизни, работы и бизнеса.<br>
-                Гармония функциональности, эстетики и человеческого комфорта.
-            </p>
-            <div class="hero-badges">
-                <span>🏠 Жилые интерьеры</span>
-                <span>☕ Общественные пространства</span>
-                <span>🛍️ Торговые площади</span>
-                <span>🏨 Отели &amp; коворкинги</span>
+            <div class="hero-content">
+                <h1>
+                    Пространства, <br>
+                    в которых <span class="accent">хочется жить</span>
+                </h1>
+                <p class="tagline">
+                    Дизайн интерьеров для жизни, работы и бизнеса.<br>
+                    Гармония функциональности, эстетики и человеческого комфорта.
+                </p>
+                <div class="hero-badges">
+                    <span>🏠 Жилые интерьеры</span>
+                    <span>☕ Общественные пространства</span>
+                    <span>🛍️ Торговые площади</span>
+                    <span>🏨 Отели &amp; коворкинги</span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contacts" class="btn">Связаться</a>
+                    <a href="#projects" class="btn btn-outline">Смотреть проекты</a>
+                </div>
             </div>
-            <div class="hero-actions">
-                <a href="#contacts" class="btn">Связаться</a>
-                <a href="#projects" class="btn btn-outline">Смотреть проекты</a>
+            <div class="hero-image">
+                <img src="images/project-001.jpg" alt="Александра Телепова — дизайнер интерьеров" />
             </div>
         </section>
 
@@ -890,7 +957,7 @@
                 </div>
             </div>
 
-            <!-- Проект 2: КРАСНО (исправлены подписи) -->
+            <!-- Проект 2: КРАСНО -->
             <div class="project-item">
                 <h3>Ресторан «КРАСНО»</h3>
                 <div class="project-meta">Гастрономический проект · Русская культура в новом прочтении</div>
