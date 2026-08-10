@@ -41,10 +41,7 @@
         }
 
         /* ===== TYPOGRAPHY ===== */
-        h1,
-        h2,
-        h3,
-        h4 {
+        h1, h2, h3, h4 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             letter-spacing: 0.02em;
@@ -435,13 +432,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.75rem;
-            color: #7a6e62;
-            font-weight: 300;
-            text-align: center;
-            padding: 12px;
-            border: 1px dashed #b8a99a;
-            min-height: 120px;
             overflow: hidden;
         }
 
@@ -452,56 +442,65 @@
             border-radius: 12px;
         }
 
-        .project-gallery .img-placeholder .label {
-            background: rgba(255, 255, 255, 0.88);
-            padding: 3px 12px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #2c2c2c;
-        }
-
-        /* ===== CONTACTS ===== */
+        /* ===== CONTACTS (НОВЫЙ БЛОК ПО ВАШЕМУ PDF) ===== */
         .contacts {
-            padding: 40px 0 30px;
+            padding: 50px 0 40px;
             border-top: 1px solid rgba(44, 44, 44, 0.06);
             text-align: center;
         }
 
-        .contacts p.lead {
-            font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+        .contacts .thank-you {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 600;
+            color: #2c2c2c;
+            margin-bottom: 0.5rem;
+        }
+
+        .contacts .lead {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
             font-weight: 300;
-            color: #7a6e62;
-            max-width: 500px;
-            margin: 0 auto;
+            color: #5a4f44;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
         }
 
         .contacts-grid {
             display: flex;
             justify-content: center;
-            gap: 20px 40px;
+            gap: 30px 50px;
             flex-wrap: wrap;
-            margin: 1.6rem 0 1rem;
+            margin: 1.5rem 0 1rem;
         }
+
         .contacts-grid a {
             color: #2c2c2c;
             text-decoration: none;
-            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-size: clamp(0.95rem, 1.2vw, 1.1rem);
             font-weight: 400;
             transition: color 0.2s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            background: rgba(184, 169, 154, 0.08);
         }
         .contacts-grid a:hover {
             color: #b8a99a;
+            background: rgba(184, 169, 154, 0.15);
         }
 
-        .contacts .note {
-            font-size: clamp(0.8rem, 1vw, 0.95rem);
+        .contacts .free-note {
+            font-size: clamp(0.9rem, 1.1vw, 1rem);
             color: #7a6e62;
             font-weight: 300;
-            margin-top: 0.3rem;
+            margin-top: 1rem;
+            padding: 12px 24px;
+            background: rgba(184, 169, 154, 0.1);
+            border-radius: 40px;
+            display: inline-block;
         }
 
         /* ===== FOOTER ===== */
@@ -539,7 +538,6 @@
                 padding: 0 6px;
             }
 
-            /* Mobile menu */
             .nav-toggle {
                 display: block;
                 font-size: 1.8rem;
@@ -603,14 +601,16 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 10px;
             }
-            .project-gallery .img-placeholder {
-                min-height: 100px;
-            }
 
             .contacts-grid {
                 flex-direction: column;
                 align-items: center;
                 gap: 12px;
+            }
+            .contacts-grid a {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
             }
 
             .hero-badges span {
@@ -824,7 +824,6 @@
             </div>
 
             <div class="packages-grid">
-                <!-- Пакет 1 -->
                 <div class="package-card">
                     <span class="badge">Базовый</span>
                     <h4>Планировочное и стилистическое решение</h4>
@@ -838,7 +837,6 @@
                     <p class="package-note">Срок: 10–15 дней</p>
                 </div>
 
-                <!-- Пакет 2 -->
                 <div class="package-card" style="border-color: #b8a99a; background: #fcfaf8;">
                     <span class="badge" style="background: #b8a99a;">Полный проект</span>
                     <h4>Дизайн-проект с рабочей документацией</h4>
@@ -852,7 +850,6 @@
                     <p class="package-note">Срок: 30–45 дней</p>
                 </div>
 
-                <!-- Дополнительные услуги -->
                 <div class="package-card">
                     <span class="badge">Дополнительно</span>
                     <h4>Комплектация · 3D · Надзор</h4>
@@ -883,31 +880,17 @@
                     Акцент на камерности, уюте и интимной обстановке для творчества.
                 </p>
                 <div class="project-gallery">
-                    <div class="img-placeholder">
-                        <img src="images/project-016.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-017.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-018.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-019.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-020.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-021.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-022.jpg" alt="Творческая мастерская Vintage" />
-                    </div>
+                    <div class="img-placeholder"><img src="images/project-016.jpg" alt="Vintage 1" /></div>
+                    <div class="img-placeholder"><img src="images/project-017.jpg" alt="Vintage 2" /></div>
+                    <div class="img-placeholder"><img src="images/project-018.jpg" alt="Vintage 3" /></div>
+                    <div class="img-placeholder"><img src="images/project-019.jpg" alt="Vintage 4" /></div>
+                    <div class="img-placeholder"><img src="images/project-020.jpg" alt="Vintage 5" /></div>
+                    <div class="img-placeholder"><img src="images/project-021.jpg" alt="Vintage 6" /></div>
+                    <div class="img-placeholder"><img src="images/project-022.jpg" alt="Vintage 7" /></div>
                 </div>
             </div>
 
-            <!-- Проект 2: КРАСНО -->
+            <!-- Проект 2: КРАСНО (исправлены подписи) -->
             <div class="project-item">
                 <h3>Ресторан «КРАСНО»</h3>
                 <div class="project-meta">Гастрономический проект · Русская культура в новом прочтении</div>
@@ -915,45 +898,19 @@
                     Мощный и многослойный образ красного цвета, воплощённый в аскетичном современном дизайне.
                 </p>
                 <div class="project-gallery">
-                    <div class="img-placeholder">
-                        <img src="images/project-024.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-025.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-026.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                                        <div class="img-placeholder">
-                        <img src="images/project-027.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-028.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-029.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-030.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-032.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-033.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-034.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-035.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-036.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-037.jpg" alt="ЖК Dream Towers" />
-                    </div>
+                    <div class="img-placeholder"><img src="images/project-024.jpg" alt="КРАСНО 1" /></div>
+                    <div class="img-placeholder"><img src="images/project-025.jpg" alt="КРАСНО 2" /></div>
+                    <div class="img-placeholder"><img src="images/project-026.jpg" alt="КРАСНО 3" /></div>
+                    <div class="img-placeholder"><img src="images/project-027.jpg" alt="КРАСНО 4" /></div>
+                    <div class="img-placeholder"><img src="images/project-028.jpg" alt="КРАСНО 5" /></div>
+                    <div class="img-placeholder"><img src="images/project-029.jpg" alt="КРАСНО 6" /></div>
+                    <div class="img-placeholder"><img src="images/project-030.jpg" alt="КРАСНО 7" /></div>
+                    <div class="img-placeholder"><img src="images/project-032.jpg" alt="КРАСНО 8" /></div>
+                    <div class="img-placeholder"><img src="images/project-033.jpg" alt="КРАСНО 9" /></div>
+                    <div class="img-placeholder"><img src="images/project-034.jpg" alt="КРАСНО 10" /></div>
+                    <div class="img-placeholder"><img src="images/project-035.jpg" alt="КРАСНО 11" /></div>
+                    <div class="img-placeholder"><img src="images/project-036.jpg" alt="КРАСНО 12" /></div>
+                    <div class="img-placeholder"><img src="images/project-037.jpg" alt="КРАСНО 13" /></div>
                 </div>
             </div>
 
@@ -966,27 +923,56 @@
                     становятся фоном для жизни, полной цвета и характера.
                 </p>
                 <div class="project-gallery">
-                    <div class="img-placeholder">
-                        <img src="images/project-038.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-039.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-040.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                                        <div class="img-placeholder">
-                        <img src="images/project-041.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-042.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-043.jpg" alt="ЖК Dream Towers" />
-                    </div>
-                    <div class="img-placeholder">
-                        <img src="images/project-044.jpg" alt="ЖК Dream Towers" />
-                    </div>
+                    <div class="img-placeholder"><img src="images/project-038.jpg" alt="Dream Towers 1" /></div>
+                    <div class="img-placeholder"><img src="images/project-039.jpg" alt="Dream Towers 2" /></div>
+                    <div class="img-placeholder"><img src="images/project-040.jpg" alt="Dream Towers 3" /></div>
+                    <div class="img-placeholder"><img src="images/project-041.jpg" alt="Dream Towers 4" /></div>
+                    <div class="img-placeholder"><img src="images/project-042.jpg" alt="Dream Towers 5" /></div>
+                    <div class="img-placeholder"><img src="images/project-043.jpg" alt="Dream Towers 6" /></div>
+                    <div class="img-placeholder"><img src="images/project-044.jpg" alt="Dream Towers 7" /></div>
                 </div>
             </div>
-        </section
+        </section>
+
+        <!-- ===== CONTACTS ===== -->
+        <section id="contacts" class="contacts">
+            <div class="thank-you">Спасибо</div>
+            <p class="lead">
+                Благодарю вас за то, что уделили время и ознакомились с моим портфолио.<br>
+                Если вы чувствуете, что мой подход близок вам — я буду рада помочь воплотить ваши мечты о пространстве.<br>
+                <strong>До встречи в вашем новом интерьере!</strong>
+            </p>
+
+            <div class="contacts-grid">
+                <a href="https://t.me/+79171141088" target="_blank">📱 Telegram: +7 (917) 114-10-88</a>
+                <a href="mailto:alle.design@mail.ru" target="_blank">✉️ alle.design@mail.ru</a>
+                <a href="https://instagram.com/alle_design" target="_blank">📷 @alle_design</a>
+            </div>
+
+            <div class="free-note">
+                ✨ Напишите мне, и мы обсудим ваш проект. Первая консультация — бесплатно.
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            &copy; 2026 Александра Телепова — Дизайн интерьеров
+        </footer>
+
+    </div>
+
+    <script>
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.getElementById('navToggle');
+            const nav = document.getElementById('mainNav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
