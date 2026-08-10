@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Александра Телепова — Дизайнер интерьеров</title>
+
+    <!-- Google Fonts: элегантные шрифты для дизайнера -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== Сброс и базовые стили ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9f7f4;
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== Типографика ===== */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 8vw, 4.8rem);
+            line-height: 1.05;
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            margin-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #b8a99a;
+            margin: 0.75rem auto 0;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: #7a6e62;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* ===== Кнопки ===== */
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: #2c2c2c;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #4a3f37;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #2c2c2c;
+            border: 1.5px solid #2c2c2c;
+        }
+        .btn-outline:hover {
+            background: #2c2c2c;
+            color: #fff;
+        }
+
+        /* ===== Шапка / Навигация ===== */
+        header {
+            padding: 24px 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(44, 44, 44, 0.08);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+        .logo span {
+            color: #b8a99a;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #b8a99a;
+        }
+
+        /* ===== Hero-секция ===== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0 50px;
+        }
+
+        .hero h1 {
+            max-width: 800px;
+        }
+        .hero h1 .accent {
+            color: #b8a99a;
+            font-style: italic;
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #7a6e62;
+            margin: 1rem 0 2rem;
+            max-width: 500px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .hero-badges span {
+            font-size: 0.9rem;
+            color: #5a4f44;
+            background: rgba(184, 169, 154, 0.15);
+            padding: 6px 20px;
+            border-radius: 30px;
+        }
+
+        /* ===== Секция "Обо мне" ===== */
+        .about {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        }
+
+        .about-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: #3d3d3d;
+        }
+        .about-text p strong {
+            font-weight: 500;
+            color: #2c2c2c;
+        }
+
+        .about-info {
+            background: #f3f0eb;
+            padding: 32px 36px;
+            border-radius: 16px;
+        }
+        .about-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .about-info p {
+            font-size: 0.95rem;
+            color: #4a4a4a;
+            margin-bottom: 0.8rem;
+        }
+        .about-info .highlight {
+            font-weight: 500;
+            color: #2c2c2c;
+        }
+
+        /* ===== Услуги (4 колонки) ===== */
+        .services {
+            padding: 60px 0;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 30px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .service-card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .service-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+        }
+        .service-card p {
+            font-size: 0.92rem;
+            color: #6a5f54;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ===== Этапы работы ===== */
+        .process {
+            padding: 60px 0;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            background: #fff;
+            padding: 28px 26px;
+            border-radius: 16px;
+            border-left: 4px solid #b8a99a;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+        }
+        .process-step .num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #b8a99a;
+        }
+        .process-step h4 {
+            font-size: 1.1rem;
+            margin: 0.2rem 0 0.4rem;
+        }
+        .process-step p {
+            font-size: 0.92rem;
+            color: #6a5f54;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* ===== Пакеты услуг ===== */
+        .packages {
+            padding: 60px 0;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: #fff;
+            padding: 32px 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(44, 44, 44, 0.06);
+            transition: transform 0.2s;
+        }
+        .package-card:hover {
+            transform: translateY(-4px);
+        }
+        .package-card .badge {
+            display: inline-block;
+            background: #2c2c2c;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 4px 16px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .package-card h4 {
+            font-size: 1.3rem;
+        }
+        .package-card .price {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #b8a99a;
+            margin: 0.5rem 0 0.8rem;
+        }
+        .package-card ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .package-card ul li {
+            font-size: 0.92rem;
+            color: #4a4a4a;
+            padding: 4px 0;
+            padding-left: 24px;
+            position: relative;
+            font-weight: 300;
+        }
+        .package-card ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #b8a99a;
+        }
+
+        /* ===== Проекты ===== */
+        .projects {
+            padding: 60px 0;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        }
+
+        .project-item {
+            margin-bottom: 4rem;
+        }
+        .project-item h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+        }
+        .project-item .project-meta {
+            font-size: 0.95rem;
+            color: #7a6e62;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        /* Сетка для изображений проектов */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .project-gallery .placeholder-img {
+            background: #e8e2db;
+            border-radius: 12px;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: #7a6e62;
+            font-weight: 300;
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed #b8a99a;
+            transition: opacity 0.2s;
+            min-height: 180px;
+        }
+
+        .project-gallery .placeholder-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .project-gallery .placeholder-img .label {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #2c2c2c;
+        }
+
+        /* ===== Контакты ===== */
+        .contacts {
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+            text-align: center;
+        }
+
+        .contacts-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 2rem 0 1.5rem;
+        }
+        .contacts-grid a {
+            color: #2c2c2c;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 400;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contacts-grid a:hover {
+            color: #b8a99a;
+        }
+
+        .contacts .note {
+            font-size: 0.95rem;
+            color: #7a6e62;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== Футер ===== */
+        footer {
+            padding: 30px 0 20px;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+            text-align: center;
+            font-size: 0.85rem;
+            color: #aaa29b;
+            font-weight: 300;
+        }
+
+        /* ===== Адаптив ===== */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            nav {
+                gap: 16px;
+                justify-content: center;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .hero {
+                padding: 30px 0 30px;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contacts-grid {
+                gap: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .project-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 0 12px;
+            }
+            .container {
+                padding: 0 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== ШАПКА ===== -->
+        <header>
+            <div class="logo">Александра <span>Телепова</span></div>
+            <nav>
+                <a href="#about">Обо мне</a>
+                <a href="#services">Услуги</a>
+                <a href="#process">Процесс</a>
+                <a href="#packages">Пакеты</a>
+                <a href="#projects">Проекты</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </header>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <h1>
+                Пространства, <br class="hide-mobile">
+                в которых <span class="accent">хочется жить</span>
+            </h1>
+            <p class="tagline">
+                Дизайн интерьеров для жилых, общественных и коммерческих пространств.
+                Гармония функциональности, эстетики и человеческого комфорта.
+            </p>
+            <div class="hero-badges">
+                <span>🏠 Жилые интерьеры</span>
+                <span>☕ Общественные пространства</span>
+                <span>🛍️ Торговые площади</span>
+                <span>🏨 Отели &amp; коворкинги</span>
+            </div>
+            <div style="margin-top: 2rem;">
+                <a href="#contacts" class="btn">Связаться</a>
+                <a href="#projects" class="btn btn-outline" style="margin-left: 12px;">Смотреть проекты</a>
+            </div>
+        </section>
+
+        <!-- ===== ОБО МНЕ ===== -->
+        <section id="about" class="about">
+            <div class="about-text">
+                <h2>Обо мне</h2>
+                <p>
+                    <strong>Александра Телепова</strong> — дизайнер интерьеров жилых и общественных пространств.
+                    Высшая школа экономики, Школа дизайна.
+                </p>
+                <p>
+                    Дизайн интерьера для меня — это исследование того, как пространство влияет на человека,
+                    его настроение, привычки и внутреннее состояние. Я стремлюсь создавать интерьеры, которые
+                    не просто радуют глаз, но и становятся естественной средой для жизни, работы и отдыха.
+                </p>
+                <p>
+                    <strong>Цвет для меня — главный герой.</strong> Я помогаю своим клиентам открыть те цвета,
+                    которых они боялись, но которые идеально им подходят. Моя задача — сделать так, чтобы каждый
+                    оттенок работал на атмосферу, настроение и ваш ежедневный комфорт.
+                </p>
+                <p style="font-style: italic; color: #7a6e62;">
+                    Я не просто проектирую интерьеры — я создаю пространства, в которых люди чувствуют себя собой.
+                </p>
+            </div>
+            <div class="about-info">
+                <h4>📐 Образование</h4>
+                <p><span class="highlight">Высшая школа экономики</span>, Школа дизайна<br>
+                Специализация: дизайн интерьеров жилых и общественных пространств</p>
+
+                <h4 style="margin-top: 1.2rem;">🎯 Философия</h4>
+                <p>Гармоничный союз функциональности, эстетики и человеческого комфорта.</p>
+
+                <h4 style="margin-top: 1.2rem;">🏆 Достижения</h4>
+                <p>Выпускной проект отмечен в <span class="highlight">топ-3 лучших работ</span> курса «Дизайн интерьера» НИУ ВШЭ.</p>
+            </div>
+        </section>
+
+        <!-- ===== УСЛУГИ ===== -->
+        <section id="services" class="services">
+            <div class="section-title">
+                <h2>Пространства, которые я создаю</h2>
+                <p class="subtitle">Интерьеры для жизни, работы и бизнеса. С цветом, светом и смыслом.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="icon">🏠</span>
+                    <h4>Жилые пространства</h4>
+                    <p>Квартиры, апартаменты, студии. Продуманная эргономика, индивидуальные цветовые решения, комфорт для каждого члена семьи.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">☕</span>
+                    <h4>Общественные пространства</h4>
+                    <p>Кафе, бары, рестораны. Атмосфера, которая привлекает и удерживает гостей, интерьер, соответствующий концепции заведения.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">🛍️</span>
+                    <h4>Торговые пространства</h4>
+                    <p>Магазины и бутики. Визуальный мерчандайзинг, продуманная навигация, увеличение продаж через грамотное зонирование.</p>
+                </div>
+                <div class="service-card">
+                    <span class="icon">🏨</span>
+                    <h4>Коммерческие пространства</h4>
+                    <p>Отели, коворкинги, салоны красоты, офисы. Функциональность и эстетика в каждом решении, учёт бренда и концепции.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ЭТАПЫ РАБОТЫ ===== -->
+        <section id="process" class="process">
+            <div class="section-title">
+                <h2>Как мы работаем</h2>
+                <p class="subtitle">6 шагов к вашему идеальному интерьеру</p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <span class="num">01</span>
+                    <h4>Знакомство и анализ потребностей</h4>
+                    <p>Консультация, выезд на объект, замеры, фотофиксация. Обсуждаем стиль, бюджет, сроки, ваши пожелания и функциональные задачи.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">02</span>
+                    <h4>Разработка концепции и согласование</h4>
+                    <p>Планировочные решения (2–3 варианта), коллажи и 3D-визуализация всех помещений. Вносим правки, утверждаем финальную концепцию.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">03</span>
+                    <h4>Подготовка рабочей документации</h4>
+                    <p>Архитектурные чертежи, схемы инженерии, ведомость отделки, спецификация мебели. Полный пакет для строителей.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">04</span>
+                    <h4>Комплектация и закупки</h4>
+                    <p>Подбор поставщиков, составление сметы, заказ и отслеживание поставок, проверка количества и качества на объекте.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">05</span>
+                    <h4>Авторский надзор</h4>
+                    <p>Регулярные выезды, контроль качества и сроков, согласование закупок, решение вопросов с бригадой на всех этапах.</p>
+                </div>
+                <div class="process-step">
+                    <span class="num">06</span>
+                    <h4>Финальная сдача</h4>
+                    <p>Финальный осмотр по чек-листу, передача документов и контактов поставщиков, профессиональная фотосъёмка готового интерьера.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ПАКЕТЫ УСЛУГ ===== -->
+        <section id="packages" class="packages">
+            <div class="section-title">
+                <h2>Пакеты услуг</h2>
+                <p class="subtitle">Выберите формат сотрудничества под ваши задачи</p>
+            </div>
+
+            <div class="packages-grid">
+
+                <!-- Пакет 1 -->
+                <div class="package-card">
+                    <span class="badge">Базовый</span>
+                    <h4>Планировочное и стилистическое решение</h4>
+                    <div class="price">1 000 ₽/м² (от 30 000 ₽)</div>
+                    <ul>
+                        <li>Обмерный план</li>
+                        <li>План демонтажа и монтажа</li>
+                        <li>Планировочное решение (2–3 варианта)</li>
+                        <li>Стилистическое решение (коллажи, эскизы)</li>
+                    </ul>
+                    <p style="font-size:0.85rem; color:#7a6e62; margin-top:0.5rem;">Срок: 10–15 дней</p>
+                </div>
+
+                <!-- Пакет 2 -->
+                <div class="package-card" style="border-color: #b8a99a; background: #fcfaf8;">
+                    <span class="badge" style="background: #b8a99a;">Полный проект</span>
+                    <h4>Дизайн-проект с рабочей документацией</h4>
+                    <div class="price">2 500 ₽/м² (от 75 000 ₽)</div>
+                    <ul>
+                        <li>Все планы: демонтаж, монтаж, мебель, полы, потолок</li>
+                        <li>Планы: освещение, розетки, выключатели, сантехника</li>
+                        <li>Развёртки стен, коллажи по помещениям</li>
+                        <li>Полная спецификация: отделка, мебель, свет, сантехника</li>
+                    </ul>
+                    <p style="font-size:0.85rem; color:#7a6e62; margin-top:0.5rem;">Срок: 30–45 дней</p>
+                </div>
+
+                <!-- Дополнительные услуги -->
+                <div class="package-card">
+                    <span class="badge">Дополнительно</span>
+                    <h4>Комплектация · 3D-визуализация · Авторский надзор</h4>
+                    <div class="price">По запросу</div>
+                    <ul>
+                        <li><strong>3D-визуализация</strong> — от 500 ₽/м² (от 2 ракурсов на помещение)</li>
+                        <li><strong>Комплектация</strong> — 10% от суммы сметы (от 30 000 ₽)</li>
+                        <li><strong>Авторский надзор</strong> — от 30 000 ₽/мес.</li>
+                    </ul>
+                    <p style="font-size:0.85rem; color:#7a6e62; margin-top:0.5rem;">Выполняются только в рамках Пакета 2</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ===== ПРОЕКТЫ ===== -->
+        <section id="projects" class="projects">
+            <div class="section-title">
+                <h2>Мои проекты</h2>
+                <p class="subtitle">Реализованные и концептуальные работы</p>
+            </div>
+
+            <!-- Проект 1 -->
+            <div class="project-item">
+                <h3>Творческая мастерская «Vintage»</h3>
+                <div class="project-meta">В историческом здании · Выпускной проект, топ-3 ВШЭ</div>
+                <p style="font-weight:300; margin-bottom:1rem;">
+                    Главная тема — ощущение, что вы пришли в гости к творческому интеллигенту или художнику
+                    60–70-х годов. Акцент на камерности, уюте и интимной обстановке для творчества.
+                </p>
+                <div class="project-gallery">
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 1</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 2</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 3</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Проект 2 -->
+            <div class="project-item">
+                <h3>Ресторан «КРАСНО»</h3>
+                <div class="project-meta">Гастрономический проект · Современная интерпретация русской культуры</div>
+                <p style="font-weight:300; margin-bottom:1rem;">
+                    Мощный и многослойный образ красного цвета, воплощённый в аскетичном современном дизайне.
+                    Главный инструмент создания атмосферы — цвет и свет.
+                </p>
+                <div class="project-gallery">
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 1</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 2</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 3</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Проект 3 -->
+            <div class="project-item">
+                <h3>ЖК Dream Towers</h3>
+                <div class="project-meta">Трёхкомнатная квартира, 110 м² · Mid Century Modern</div>
+                <p style="font-weight:300; margin-bottom:1rem;">
+                    Современная интерпретация стиля Mid Century Modern. Лаконичная геометрия и природные материалы
+                    становятся фоном для жизни, полной цвета и характера.
+                </p>
+                <div class="project-gallery">
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 1</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 2</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 3</span>
+                    </div>
+                    <div class="placeholder-img">
+                        <span class="label">⬇ Вставьте фото 4</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== КОНТАКТЫ ===== -->
+        <section id="contacts" class="contacts">
+            <h2>Связаться со мной</h2>
+            <p style="font-size:1.05rem; font-weight:300; color:#7a6e62; max-width:500px; margin:0 auto;">
+                Если вы чувствуете, что мой подход близок вам — я буду рада помочь воплотить ваши мечты о пространстве.
+                Первая консультация — бесплатно.
+            </p>
+
+            <div class="contacts-grid">
+                <a href="tel:+79171141088" target="_blank">📱 Telegram: +7 (917) 114-10-88</a>
+                <a href="mailto:alle.design@mail.ru" target="_blank">✉️ alle.design@mail.ru</a>
+                <a href="https://instagram.com/alle_design" target="_blank">📷 @alle_design</a>
+            </div>
+
+            <p class="note">Напишите мне, и мы обсудим ваш проект.</p>
+        </section>
+
+        <!-- ===== ФУТЕР ===== -->
+        <footer>
+            &copy; 2026 Александра Телепова — Дизайн интерьеров
+        </footer>
+
+    </div>
+
+    <style>
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none;
+            }
+        }
+    </style>
+
+</body>
+</html>
