@@ -162,7 +162,7 @@
             color: #b8a99a;
         }
 
-        /* ===== HERO (обновлённая с фото) ===== */
+        /* ===== HERO ===== */
         .hero {
             padding: 40px 0 36px;
             display: grid;
@@ -455,6 +455,13 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-gallery .img-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         }
 
         .project-gallery .img-placeholder img {
@@ -462,6 +469,61 @@
             height: 100%;
             object-fit: cover;
             border-radius: 12px;
+            pointer-events: none; /* чтобы клик срабатывал на родителе */
+        }
+
+        /* ===== LIGHTBOX (fullscreen image preview) ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox .close-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            pointer-events: none;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 20px;
+            border-radius: 30px;
         }
 
         /* ===== CONTACTS ===== */
@@ -536,7 +598,7 @@
         }
 
         /* ================================================================ */
-        /* ===== АДАПТИВ: МОБИЛЬНЫЕ УСТРОЙСТВА ===== */
+        /* ===== АДАПТИВ ===== */
         /* ================================================================ */
 
         @media (max-width: 992px) {
@@ -550,7 +612,6 @@
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .hero {
                 grid-template-columns: 1fr 1fr;
                 gap: 30px;
@@ -676,6 +737,19 @@
                 font-size: 0.7rem;
                 padding: 3px 10px;
             }
+
+            .lightbox {
+                padding: 20px;
+            }
+            .lightbox img {
+                max-width: 95%;
+                max-height: 85%;
+            }
+            .lightbox .close-hint {
+                bottom: 20px;
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -719,6 +793,19 @@
                 width: 100%;
                 max-width: 260px;
             }
+
+            .lightbox {
+                padding: 12px;
+            }
+            .lightbox img {
+                max-width: 98%;
+                max-height: 80%;
+            }
+            .lightbox .close-hint {
+                bottom: 16px;
+                font-size: 0.6rem;
+                padding: 4px 12px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -750,7 +837,7 @@
             </nav>
         </header>
 
-        <!-- ===== HERO (обновлённая с фото) ===== -->
+        <!-- ===== HERO ===== -->
         <section class="hero">
             <div class="hero-content">
                 <h1>
@@ -947,13 +1034,27 @@
                     Акцент на камерности, уюте и интимной обстановке для творчества.
                 </p>
                 <div class="project-gallery">
-                    <div class="img-placeholder"><img src="images/project-016.jpg" alt="Vintage 1" /></div>
-                    <div class="img-placeholder"><img src="images/project-017.jpg" alt="Vintage 2" /></div>
-                    <div class="img-placeholder"><img src="images/project-018.jpg" alt="Vintage 3" /></div>
-                    <div class="img-placeholder"><img src="images/project-019.jpg" alt="Vintage 4" /></div>
-                    <div class="img-placeholder"><img src="images/project-020.jpg" alt="Vintage 5" /></div>
-                    <div class="img-placeholder"><img src="images/project-021.jpg" alt="Vintage 6" /></div>
-                    <div class="img-placeholder"><img src="images/project-022.jpg" alt="Vintage 7" /></div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-016.jpg" alt="Vintage 1" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-017.jpg" alt="Vintage 2" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-018.jpg" alt="Vintage 3" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-019.jpg" alt="Vintage 4" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-020.jpg" alt="Vintage 5" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-021.jpg" alt="Vintage 6" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-022.jpg" alt="Vintage 7" loading="lazy" />
+                    </div>
                 </div>
             </div>
 
@@ -965,19 +1066,45 @@
                     Мощный и многослойный образ красного цвета, воплощённый в аскетичном современном дизайне.
                 </p>
                 <div class="project-gallery">
-                    <div class="img-placeholder"><img src="images/project-024.jpg" alt="КРАСНО 1" /></div>
-                    <div class="img-placeholder"><img src="images/project-025.jpg" alt="КРАСНО 2" /></div>
-                    <div class="img-placeholder"><img src="images/project-026.jpg" alt="КРАСНО 3" /></div>
-                    <div class="img-placeholder"><img src="images/project-027.jpg" alt="КРАСНО 4" /></div>
-                    <div class="img-placeholder"><img src="images/project-028.jpg" alt="КРАСНО 5" /></div>
-                    <div class="img-placeholder"><img src="images/project-029.jpg" alt="КРАСНО 6" /></div>
-                    <div class="img-placeholder"><img src="images/project-030.jpg" alt="КРАСНО 7" /></div>
-                    <div class="img-placeholder"><img src="images/project-032.jpg" alt="КРАСНО 8" /></div>
-                    <div class="img-placeholder"><img src="images/project-033.jpg" alt="КРАСНО 9" /></div>
-                    <div class="img-placeholder"><img src="images/project-034.jpg" alt="КРАСНО 10" /></div>
-                    <div class="img-placeholder"><img src="images/project-035.jpg" alt="КРАСНО 11" /></div>
-                    <div class="img-placeholder"><img src="images/project-036.jpg" alt="КРАСНО 12" /></div>
-                    <div class="img-placeholder"><img src="images/project-037.jpg" alt="КРАСНО 13" /></div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-024.jpg" alt="КРАСНО 1" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-025.jpg" alt="КРАСНО 2" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-026.jpg" alt="КРАСНО 3" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-027.jpg" alt="КРАСНО 4" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-028.jpg" alt="КРАСНО 5" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-029.jpg" alt="КРАСНО 6" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-030.jpg" alt="КРАСНО 7" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-032.jpg" alt="КРАСНО 8" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-033.jpg" alt="КРАСНО 9" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-034.jpg" alt="КРАСНО 10" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-035.jpg" alt="КРАСНО 11" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-036.jpg" alt="КРАСНО 12" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-037.jpg" alt="КРАСНО 13" loading="lazy" />
+                    </div>
                 </div>
             </div>
 
@@ -990,13 +1117,27 @@
                     становятся фоном для жизни, полной цвета и характера.
                 </p>
                 <div class="project-gallery">
-                    <div class="img-placeholder"><img src="images/project-038.jpg" alt="Dream Towers 1" /></div>
-                    <div class="img-placeholder"><img src="images/project-039.jpg" alt="Dream Towers 2" /></div>
-                    <div class="img-placeholder"><img src="images/project-040.jpg" alt="Dream Towers 3" /></div>
-                    <div class="img-placeholder"><img src="images/project-041.jpg" alt="Dream Towers 4" /></div>
-                    <div class="img-placeholder"><img src="images/project-042.jpg" alt="Dream Towers 5" /></div>
-                    <div class="img-placeholder"><img src="images/project-043.jpg" alt="Dream Towers 6" /></div>
-                    <div class="img-placeholder"><img src="images/project-044.jpg" alt="Dream Towers 7" /></div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-038.jpg" alt="Dream Towers 1" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-039.jpg" alt="Dream Towers 2" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-040.jpg" alt="Dream Towers 3" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-041.jpg" alt="Dream Towers 4" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-042.jpg" alt="Dream Towers 5" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-043.jpg" alt="Dream Towers 6" loading="lazy" />
+                    </div>
+                    <div class="img-placeholder" onclick="openLightbox(this.querySelector('img').src)">
+                        <img src="images/project-044.jpg" alt="Dream Towers 7" loading="lazy" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -1028,8 +1169,14 @@
 
     </div>
 
+    <!-- ===== LIGHTBOX ===== -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImage" src="" alt="Увеличенное изображение" />
+        <span class="close-hint">✦ нажмите в любом месте, чтобы закрыть ✦</span>
+    </div>
+
     <script>
-        // Мобильное меню
+        // === MOBILE MENU ===
         document.addEventListener('DOMContentLoaded', function() {
             const toggle = document.getElementById('navToggle');
             const nav = document.getElementById('mainNav');
@@ -1038,6 +1185,39 @@
                     nav.classList.toggle('open');
                 });
             }
+        });
+
+        // === LIGHTBOX ===
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+
+        function openLightbox(src) {
+            lightboxImage.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // запрещаем скролл
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = ''; // возвращаем скролл
+            // небольшая задержка, чтобы убрать src после анимации
+            setTimeout(() => {
+                if (!lightbox.classList.contains('active')) {
+                    lightboxImage.src = '';
+                }
+            }, 400);
+        }
+
+        // Закрытие по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Предотвращаем закрытие при клике на само изображение (чтобы не мешать)
+        lightboxImage.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     </script>
 
