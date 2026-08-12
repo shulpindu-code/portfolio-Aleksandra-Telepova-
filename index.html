@@ -162,43 +162,37 @@
             color: #b8a99a;
         }
 
-        /* ===== HERO ===== */
+        /* ===== HERO (без фото, только текст) ===== */
         .hero {
-            padding: 40px 0 36px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+            padding: 50px 0 40px;
+            text-align: center;
             border-bottom: 1px solid rgba(44, 44, 44, 0.06);
         }
 
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
+        .hero h1 {
+            max-width: 800px;
+            margin: 0 auto;
         }
-
-        .hero-content h1 {
-            max-width: 600px;
-        }
-        .hero-content h1 .accent {
+        .hero h1 .accent {
             color: #b8a99a;
             font-style: italic;
         }
 
-        .hero-content .tagline {
-            font-size: clamp(0.95rem, 2vw, 1.2rem);
+        .hero .tagline {
+            font-size: clamp(1rem, 2vw, 1.25rem);
             font-weight: 300;
             color: #7a6e62;
             margin: 0.8rem 0 1.6rem;
-            max-width: 480px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-badges {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
+            justify-content: center;
             margin-top: 6px;
         }
         .hero-badges span {
@@ -210,21 +204,32 @@
         }
 
         .hero-actions {
-            margin-top: 1.6rem;
+            margin-top: 1.8rem;
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .hero-image {
+        /* ===== ABOUT (с фото) ===== */
+        .about {
+            padding: 50px 0;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        }
+
+        .about-image {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        .hero-image img {
+        .about-image img {
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             height: auto;
             border-radius: 20px;
             object-fit: cover;
@@ -232,14 +237,8 @@
             aspect-ratio: 3 / 4;
         }
 
-        /* ===== ABOUT ===== */
-        .about {
-            padding: 40px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: start;
-            border-top: 1px solid rgba(44, 44, 44, 0.06);
+        .about-text h2 {
+            margin-bottom: 0.8rem;
         }
 
         .about-text p {
@@ -255,8 +254,9 @@
 
         .about-info {
             background: #f3f0eb;
-            padding: 24px 24px;
+            padding: 24px 28px;
             border-radius: 16px;
+            margin-top: 1.2rem;
         }
         .about-info h4 {
             font-size: 1rem;
@@ -469,10 +469,10 @@
             height: 100%;
             object-fit: cover;
             border-radius: 12px;
-            pointer-events: none; /* чтобы клик срабатывал на родителе */
+            pointer-events: none;
         }
 
-        /* ===== LIGHTBOX (fullscreen image preview) ===== */
+        /* ===== LIGHTBOX ===== */
         .lightbox {
             display: none;
             position: fixed;
@@ -603,27 +603,11 @@
 
         @media (max-width: 992px) {
             .about {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            .about-info {
-                order: -1;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 30px;
             }
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .hero {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-            .hero-content {
-                text-align: left;
-            }
-            .hero-badges {
-                justify-content: flex-start;
-            }
-            .hero-actions {
-                justify-content: flex-start;
             }
         }
 
@@ -664,39 +648,26 @@
             }
 
             .hero {
-                grid-template-columns: 1fr;
-                gap: 24px;
-                padding: 28px 0 24px;
-                text-align: center;
+                padding: 30px 0 24px;
             }
-            .hero-content {
-                align-items: center;
-                text-align: center;
-            }
-            .hero-content h1 {
-                max-width: 100%;
-            }
-            .hero-content .tagline {
-                max-width: 100%;
-            }
-            .hero-badges {
-                justify-content: center;
-            }
-            .hero-actions {
-                justify-content: center;
-            }
-            .hero-image img {
-                max-width: 280px;
-            }
-
             .hero-actions {
                 flex-direction: column;
                 align-items: center;
-                width: 100%;
             }
             .hero-actions .btn {
                 width: 100%;
                 max-width: 280px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .about-image {
+                order: -1;
+            }
+            .about-image img {
+                max-width: 260px;
             }
 
             .services-grid {
@@ -771,7 +742,8 @@
             .hero h1 {
                 font-size: clamp(1.8rem, 12vw, 2.2rem);
             }
-            .hero-image img {
+
+            .about-image img {
                 max-width: 200px;
             }
 
@@ -837,35 +809,33 @@
             </nav>
         </header>
 
-        <!-- ===== HERO ===== -->
+        <!-- ===== HERO (без фото) ===== -->
         <section class="hero">
-            <div class="hero-content">
-                <h1>
-                    Пространства, <br>
-                    в которых <span class="accent">хочется жить</span>
-                </h1>
-                <p class="tagline">
-                    Дизайн интерьеров для жизни, работы и бизнеса.<br>
-                    Гармония функциональности, эстетики и человеческого комфорта.
-                </p>
-                <div class="hero-badges">
-                    <span>🏠 Жилые интерьеры</span>
-                    <span>☕ Общественные пространства</span>
-                    <span>🛍️ Торговые площади</span>
-                    <span>🏨 Отели &amp; коворкинги</span>
-                </div>
-                <div class="hero-actions">
-                    <a href="#contacts" class="btn">Связаться</a>
-                    <a href="#projects" class="btn btn-outline">Смотреть проекты</a>
-                </div>
+            <h1>
+                Пространства, <br>
+                в которых <span class="accent">хочется жить</span>
+            </h1>
+            <p class="tagline">
+                Дизайн интерьеров для жизни, работы и бизнеса.<br>
+                Гармония функциональности, эстетики и человеческого комфорта.
+            </p>
+            <div class="hero-badges">
+                <span>🏠 Жилые интерьеры</span>
+                <span>☕ Общественные пространства</span>
+                <span>🛍️ Торговые площади</span>
+                <span>🏨 Отели &amp; коворкинги</span>
             </div>
-            <div class="hero-image">
-                <img src="images/face.jpg" alt="Александра Телепова — дизайнер интерьеров" />
+            <div class="hero-actions">
+                <a href="#contacts" class="btn">Связаться</a>
+                <a href="#projects" class="btn btn-outline">Смотреть проекты</a>
             </div>
         </section>
 
-        <!-- ===== ABOUT ===== -->
+        <!-- ===== ABOUT (с фото) ===== -->
         <section id="about" class="about">
+            <div class="about-image">
+                <img src="images/face.jpg" alt="Александра Телепова — дизайнер интерьеров" />
+            </div>
             <div class="about-text">
                 <h2>Обо мне</h2>
                 <p>
@@ -884,17 +854,18 @@
                 <p style="font-style: italic; color: #7a6e62;">
                     Я не просто проектирую интерьеры — я создаю пространства, в которых люди чувствуют себя собой.
                 </p>
-            </div>
-            <div class="about-info">
-                <h4>📐 Образование</h4>
-                <p><span class="highlight">Высшая школа экономики</span>, Школа дизайна<br>
-                Специализация: дизайн интерьеров жилых и общественных пространств</p>
 
-                <h4 style="margin-top: 1rem;">🎯 Философия</h4>
-                <p>Гармоничный союз функциональности, эстетики и человеческого комфорта.</p>
+                <div class="about-info">
+                    <h4>📐 Образование</h4>
+                    <p><span class="highlight">Высшая школа экономики</span>, Школа дизайна<br>
+                    Специализация: дизайн интерьеров жилых и общественных пространств</p>
 
-                <h4 style="margin-top: 1rem;">🏆 Достижения</h4>
-                <p>Выпускной проект отмечен в <span class="highlight">топ-3 лучших работ</span> курса «Дизайн интерьера» НИУ ВШЭ.</p>
+                    <h4 style="margin-top: 1rem;">🎯 Философия</h4>
+                    <p>Гармоничный союз функциональности, эстетики и человеческого комфорта.</p>
+
+                    <h4 style="margin-top: 1rem;">🏆 Достижения</h4>
+                    <p>Выпускной проект отмечен в <span class="highlight">топ-3 лучших работ</span> курса «Дизайн интерьера» НИУ ВШЭ.</p>
+                </div>
             </div>
         </section>
 
@@ -1194,13 +1165,12 @@
         function openLightbox(src) {
             lightboxImage.src = src;
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // запрещаем скролл
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
-            document.body.style.overflow = ''; // возвращаем скролл
-            // небольшая задержка, чтобы убрать src после анимации
+            document.body.style.overflow = '';
             setTimeout(() => {
                 if (!lightbox.classList.contains('active')) {
                     lightboxImage.src = '';
@@ -1208,14 +1178,12 @@
             }, 400);
         }
 
-        // Закрытие по Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeLightbox();
             }
         });
 
-        // Предотвращаем закрытие при клике на само изображение (чтобы не мешать)
         lightboxImage.addEventListener('click', function(e) {
             e.stopPropagation();
         });
