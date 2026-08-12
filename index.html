@@ -29,7 +29,7 @@
             font-family: 'Inter', sans-serif;
             background: #f9f7f4;
             color: #2c2c2c;
-            line-height: 1.6;
+            line-height: 1.7;
             padding: 0 16px;
             overflow-x: hidden;
         }
@@ -49,7 +49,6 @@
             font-weight: 600;
             letter-spacing: 0.02em;
             text-decoration: none !important;
-            /* Убираем подчёркивания у всех заголовков */
         }
 
         h1 {
@@ -71,7 +70,6 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Убираем декоративную линию, которая могла давать подчёркивание */
         .section-title::after {
             display: none;
         }
@@ -216,7 +214,7 @@
         }
 
         /* ================================================================ */
-        /* ===== ABOUT ===== */
+        /* ===== ABOUT — с увеличенными отступами ===== */
         /* ================================================================ */
         .about {
             padding: 50px 0;
@@ -235,14 +233,16 @@
 
         .about-with-image {
             overflow: hidden;
+            padding-right: 10px;
         }
 
         .about-float-image {
             float: left;
-            width: 220px;
+            width: 200px;
             height: auto;
             border-radius: 20px;
-            margin: 0 32px 20px 0;
+            margin: 0 40px 24px 0;
+            /* увеличенный отступ справа и снизу */
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
             shape-outside: border-box;
         }
@@ -252,6 +252,7 @@
             font-weight: 300;
             color: #3d3d3d;
             margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
         .about-with-image p strong {
@@ -684,10 +685,11 @@
                 max-width: 280px;
             }
 
+            /* На мобильных фото становится по центру */
             .about-float-image {
                 float: none;
                 display: block;
-                margin: 0 auto 24px;
+                margin: 0 auto 28px;
                 width: 180px;
             }
             .about-with-image {
