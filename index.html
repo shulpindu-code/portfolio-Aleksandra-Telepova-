@@ -48,6 +48,8 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             letter-spacing: 0.02em;
+            text-decoration: none !important;
+            /* Убираем подчёркивания у всех заголовков */
         }
 
         h1 {
@@ -68,13 +70,10 @@
             text-align: center;
             margin-bottom: 2.5rem;
         }
+
+        /* Убираем декоративную линию, которая могла давать подчёркивание */
         .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 2px;
-            background: #b8a99a;
-            margin: 0.6rem auto 0;
+            display: none;
         }
 
         .subtitle {
@@ -83,6 +82,7 @@
             color: #7a6e62;
             text-transform: uppercase;
             letter-spacing: 0.12em;
+            text-decoration: none !important;
         }
 
         /* ===== BUTTONS ===== */
@@ -130,6 +130,7 @@
             font-size: clamp(1.2rem, 4vw, 1.6rem);
             font-weight: 700;
             letter-spacing: 0.04em;
+            text-decoration: none !important;
         }
         .logo span {
             color: #b8a99a;
@@ -215,7 +216,7 @@
         }
 
         /* ================================================================ */
-        /* ===== ABOUT — ВАРИАНТ 1: ОБТЕКАНИЕ ФОТО ===== */
+        /* ===== ABOUT ===== */
         /* ================================================================ */
         .about {
             padding: 50px 0;
@@ -229,6 +230,7 @@
 
         .about-content h2 {
             text-align: center;
+            text-decoration: none !important;
         }
 
         .about-with-image {
@@ -277,6 +279,7 @@
             font-size: 1rem;
             margin-bottom: 0.2rem;
             font-weight: 600;
+            text-decoration: none !important;
         }
 
         .about-info .info-item p {
@@ -322,6 +325,7 @@
         .service-card h4 {
             font-size: clamp(0.95rem, 1.5vw, 1.1rem);
             margin-bottom: 0.3rem;
+            text-decoration: none !important;
         }
         .service-card p {
             font-size: clamp(0.8rem, 1vw, 0.92rem);
@@ -358,6 +362,7 @@
         .process-step h4 {
             font-size: clamp(0.95rem, 1.5vw, 1.1rem);
             margin: 0.1rem 0 0.3rem;
+            text-decoration: none !important;
         }
         .process-step p {
             font-size: clamp(0.8rem, 1vw, 0.92rem);
@@ -403,6 +408,7 @@
         }
         .package-card h4 {
             font-size: clamp(1rem, 2vw, 1.3rem);
+            text-decoration: none !important;
         }
         .package-card .price {
             font-size: clamp(0.9rem, 1.5vw, 1.1rem);
@@ -446,6 +452,7 @@
         .project-item h3 {
             font-size: clamp(1.2rem, 3vw, 1.6rem);
             margin-bottom: 0.1rem;
+            text-decoration: none !important;
         }
         .project-item .project-meta {
             font-size: clamp(0.8rem, 1vw, 0.95rem);
@@ -557,6 +564,7 @@
             font-weight: 600;
             color: #2c2c2c;
             margin-bottom: 0.5rem;
+            text-decoration: none !important;
         }
 
         .contacts .lead {
@@ -676,7 +684,6 @@
                 max-width: 280px;
             }
 
-            /* Адаптив для фото с обтеканием */
             .about-float-image {
                 float: none;
                 display: block;
