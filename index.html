@@ -41,7 +41,10 @@
         }
 
         /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             letter-spacing: 0.02em;
@@ -162,7 +165,7 @@
             color: #b8a99a;
         }
 
-        /* ===== HERO (без фото, только текст) ===== */
+        /* ===== HERO (без фото) ===== */
         .hero {
             padding: 50px 0 40px;
             text-align: center;
@@ -211,63 +214,79 @@
             justify-content: center;
         }
 
-        /* ===== ABOUT (с фото) ===== */
+        /* ================================================================ */
+        /* ===== ABOUT — ВАРИАНТ 1: ОБТЕКАНИЕ ФОТО ===== */
+        /* ================================================================ */
         .about {
             padding: 50px 0;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 50px;
-            align-items: start;
             border-top: 1px solid rgba(44, 44, 44, 0.06);
         }
 
-        .about-image {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .about-image img {
-            width: 100%;
-            max-width: 380px;
+        .about-content h2 {
+            text-align: center;
+        }
+
+        .about-with-image {
+            overflow: hidden;
+            /* фиксим обтекание */;
+        }
+
+        .about-float-image {
+            float: left;
+            width: 200px;
             height: auto;
-            border-radius: 20px;
-            object-fit: cover;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-            aspect-ratio: 3 / 4;
+            border-radius: 16px;
+            margin: 0 28px 16px 0;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+            shape-outside: border-box;
         }
 
-        .about-text h2 {
-            margin-bottom: 0.8rem;
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
+        .about-with-image p {
             font-size: clamp(0.95rem, 1.2vw, 1.05rem);
             font-weight: 300;
             color: #3d3d3d;
+            margin-bottom: 1rem;
         }
-        .about-text p strong {
+
+        .about-with-image p strong {
             font-weight: 500;
             color: #2c2c2c;
         }
 
+        .about-with-image p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Блок с фактами (образование, философия, достижения) */
         .about-info {
             background: #f3f0eb;
-            padding: 24px 28px;
+            padding: 28px 32px;
             border-radius: 16px;
-            margin-top: 1.2rem;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px 30px;
+            clear: both;
         }
-        .about-info h4 {
+
+        .about-info .info-item h4 {
             font-size: 1rem;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
             font-weight: 600;
         }
-        .about-info p {
+
+        .about-info .info-item p {
             font-size: clamp(0.85rem, 1vw, 0.95rem);
             color: #4a4a4a;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0;
+            font-weight: 300;
         }
+
         .about-info .highlight {
             font-weight: 500;
             color: #2c2c2c;
@@ -602,12 +621,11 @@
         /* ================================================================ */
 
         @media (max-width: 992px) {
-            .about {
-                grid-template-columns: 1fr 1.2fr;
-                gap: 30px;
-            }
             .services-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            .about-info {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -659,15 +677,24 @@
                 max-width: 280px;
             }
 
-            .about {
+            /* Адаптив для фото с обтеканием */
+            .about-float-image {
+                float: none;
+                display: block;
+                margin: 0 auto 20px;
+                width: 160px;
+            }
+            .about-with-image {
+                text-align: center;
+            }
+            .about-with-image p {
+                text-align: left;
+            }
+
+            .about-info {
                 grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            .about-image {
-                order: -1;
-            }
-            .about-image img {
-                max-width: 260px;
+                padding: 20px 18px;
+                text-align: center;
             }
 
             .services-grid {
@@ -743,16 +770,12 @@
                 font-size: clamp(1.8rem, 12vw, 2.2rem);
             }
 
-            .about-image img {
-                max-width: 200px;
+            .about-float-image {
+                width: 130px;
             }
 
             .package-card {
                 padding: 18px 14px;
-            }
-
-            .about-info {
-                padding: 18px 16px;
             }
 
             .process-step {
@@ -809,7 +832,7 @@
             </nav>
         </header>
 
-        <!-- ===== HERO (без фото) ===== -->
+        <!-- ===== HERO ===== -->
         <section class="hero">
             <h1>
                 Пространства, <br>
@@ -831,40 +854,47 @@
             </div>
         </section>
 
-        <!-- ===== ABOUT (с фото) ===== -->
+        <!-- ===== ABOUT — ВАРИАНТ 1: ОБТЕКАНИЕ ФОТО ===== -->
         <section id="about" class="about">
-            <div class="about-image">
-                <img src="images/face.jpg" alt="Александра Телепова — дизайнер интерьеров" />
-            </div>
-            <div class="about-text">
+            <div class="about-content">
                 <h2>Обо мне</h2>
-                <p>
-                    <strong>Александра Телепова</strong> — дизайнер интерьеров жилых и общественных пространств.
-                    Высшая школа экономики, Школа дизайна.
-                </p>
-                <p>
-                    Дизайн интерьера для меня — это исследование того, как пространство влияет на человека,
-                    его настроение, привычки и внутреннее состояние. Я стремлюсь создавать интерьеры, которые
-                    не просто радуют глаз, но и становятся естественной средой для жизни, работы и отдыха.
-                </p>
-                <p>
-                    <strong>Цвет для меня — главный герой.</strong> Я помогаю своим клиентам открыть те цвета,
-                    которых они боялись, но которые идеально им подходят.
-                </p>
-                <p style="font-style: italic; color: #7a6e62;">
-                    Я не просто проектирую интерьеры — я создаю пространства, в которых люди чувствуют себя собой.
-                </p>
 
+                <div class="about-with-image">
+                    <img src="images/face.jpg" alt="Александра Телепова — дизайнер интерьеров" class="about-float-image" />
+
+                    <p>
+                        <strong>Александра Телепова</strong> — дизайнер интерьеров жилых и общественных пространств.
+                        Высшая школа экономики, Школа дизайна.
+                    </p>
+                    <p>
+                        Дизайн интерьера для меня — это исследование того, как пространство влияет на человека,
+                        его настроение, привычки и внутреннее состояние. Я стремлюсь создавать интерьеры, которые
+                        не просто радуют глаз, но и становятся естественной средой для жизни, работы и отдыха.
+                    </p>
+                    <p>
+                        <strong>Цвет для меня — главный герой.</strong> Я помогаю своим клиентам открыть те цвета,
+                        которых они боялись, но которые идеально им подходят.
+                    </p>
+                    <p style="font-style: italic; color: #7a6e62;">
+                        Я не просто проектирую интерьеры — я создаю пространства, в которых люди чувствуют себя собой.
+                    </p>
+                </div>
+
+                <!-- Блок фактов -->
                 <div class="about-info">
-                    <h4>📐 Образование</h4>
-                    <p><span class="highlight">Высшая школа экономики</span>, Школа дизайна<br>
-                    Специализация: дизайн интерьеров жилых и общественных пространств</p>
-
-                    <h4 style="margin-top: 1rem;">🎯 Философия</h4>
-                    <p>Гармоничный союз функциональности, эстетики и человеческого комфорта.</p>
-
-                    <h4 style="margin-top: 1rem;">🏆 Достижения</h4>
-                    <p>Выпускной проект отмечен в <span class="highlight">топ-3 лучших работ</span> курса «Дизайн интерьера» НИУ ВШЭ.</p>
+                    <div class="info-item">
+                        <h4>📐 Образование</h4>
+                        <p><span class="highlight">Высшая школа экономики</span>, Школа дизайна<br>
+                        Специализация: дизайн интерьеров жилых и общественных пространств</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🎯 Философия</h4>
+                        <p>Гармоничный союз функциональности, эстетики и человеческого комфорта.</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>🏆 Достижения</h4>
+                        <p>Выпускной проект отмечен в <span class="highlight">топ-3 лучших работ</span> курса «Дизайн интерьера» НИУ ВШЭ.</p>
+                    </div>
                 </div>
             </div>
         </section>
